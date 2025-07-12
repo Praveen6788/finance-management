@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FinancialData, Transaction, Budget } from './types';
+import { FinancialData, Transaction } from './types';
 
 const STORAGE_KEY = 'vibe-finance-data';
 
