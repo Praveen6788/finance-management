@@ -59,9 +59,9 @@ function App() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-neon-green to-neon-blue rounded-lg"></div>
-              <h1 className="text-xl font-bold text-white">Vibe Finance</h1>
+              <h1 className="text-lg sm:text-xl font-bold text-white">Vibe Finance</h1>
             </div>
-            <div className="text-sm text-gray-400">Smart Money Management</div>
+            <div className="hidden sm:block text-sm text-gray-400">Smart Money Management</div>
           </div>
         </div>
       </header>
@@ -69,7 +69,8 @@ function App() {
       {/* Navigation */}
       <nav className="bg-dark-card border-b border-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -88,11 +89,34 @@ function App() {
               );
             })}
           </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <div className="grid grid-cols-4 gap-1">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex flex-col items-center justify-center px-2 py-3 text-xs font-medium transition-colors ${
+                      activeTab === tab.id
+                        ? "text-neon-green bg-dark-bg"
+                        : "text-gray-400 hover:text-gray-300"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5 mb-1" />
+                    <span className="truncate">{tab.label.split(' ')[0]}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         {renderContent()}
       </main>
     </div>
