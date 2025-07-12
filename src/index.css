@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-dark-border;
+  }
+
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", sans-serif;
+  }
+}
+
+@layer components {
+  .neon-glow {
+    box-shadow: 0 0 5px theme("colors.neon-green"),
+      0 0 10px theme("colors.neon-green"), 0 0 15px theme("colors.neon-green");
+  }
+
+  .card-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 255, 136, 0.1) 0%,
+      rgba(0, 204, 255, 0.1) 100%
+    );
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-neon-green to-neon-blue text-black font-semibold px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-dark-card border border-dark-border text-white px-6 py-3 rounded-lg hover:border-neon-green transition-all duration-300;
+  }
+}
